@@ -10,4 +10,4 @@ export type Results = { results: Result[] };
 
 export type Validatable = { isValid: boolean };
 
-export const passes = 'Passes.';
+export type Uri = { route: string; complete: string };

@@ -9,11 +9,6 @@ export const toPass = (result: CustomMatcherResult): CustomMatcherResult =>
     .not(c => c.pass, `Match failed instead of passed.`)
     .else('Match passed');
 
-export const toFail = (result: CustomMatcherResult): CustomMatcherResult =>
-  match(result)
-    .not(c => !c.pass, `Match passed instead of failed.`)
-    .else('Match failed');
-
 export const toPassWith = (result: CustomMatcherResult, message: Message): CustomMatcherResult =>
   match(result)
     .not(c => c.pass, `Match failed instead of passed.`)
@@ -23,20 +18,9 @@ export const toPassWith = (result: CustomMatcherResult, message: Message): Custo
     )
     .else('Match passed');
 
-export const toFailWith = (result: CustomMatcherResult, message: Message): CustomMatcherResult =>
-  match(result)
-    .not(c => !c.pass, `Match passed instead of failed.`)
-    .not(
-      c => c.message().includes(ofMessage(message)),
-      c => `Match failed, but with message '${c.message()}' instead of '${message}'.`
-    )
-    .else('Match failed');
-
 expect.extend({
   toPass: toPass,
-  toFail: toFail,
   toPassWith: toPassWith,
-  toFailWith: toFailWith,
 });
 
 declare global {
@@ -44,9 +28,7 @@ declare global {
   namespace jest {
     interface Matchers<R, T> {
       toPass(): R;
-      toFail(): R;
       toPassWith(message: string): R;
-      toFailWith(message: string): R;
     }
   }
 }
