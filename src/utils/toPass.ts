@@ -4,18 +4,18 @@ import { Message, ofMessage } from './Types';
 
 // Handles CustomMatcherResult validations.
 
-export const toPass = (cmr: CustomMatcherResult): CustomMatcherResult =>
-  match(cmr)
+export const toPass = (result: CustomMatcherResult): CustomMatcherResult =>
+  match(result)
     .not(c => c.pass, `Match failed instead of passed.`)
     .else("Match passed");
 
-export const toFail = (cmr: CustomMatcherResult): CustomMatcherResult =>
-  match(cmr)
+export const toFail = (result: CustomMatcherResult): CustomMatcherResult =>
+  match(result)
     .not(c => !c.pass, `Match passed instead of failed.`)
     .else("Match failed");
 
-export const toPassWith = (cmr: CustomMatcherResult, message: Message): CustomMatcherResult =>
-  match(cmr)
+export const toPassWith = (result: CustomMatcherResult, message: Message): CustomMatcherResult =>
+  match(result)
     .not(c => c.pass, `Match failed instead of passed.`)
     .not(
       c => c.message().includes(ofMessage(message)),
@@ -23,8 +23,8 @@ export const toPassWith = (cmr: CustomMatcherResult, message: Message): CustomMa
     )
     .else("Match passed");
 
-export const toFailWith = (cmr: CustomMatcherResult, message: Message): CustomMatcherResult =>
-  match(cmr)
+export const toFailWith = (result: CustomMatcherResult, message: Message): CustomMatcherResult =>
+  match(result)
     .not(c => !c.pass, `Match passed instead of failed.`)
     .not(
       c => c.message().includes(ofMessage(message)),
