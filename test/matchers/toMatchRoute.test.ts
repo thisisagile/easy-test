@@ -1,6 +1,6 @@
 import { toMatchRoute } from '../../src/matchers';
 
-const uri = { route: '/devs', complete: '$host/$resource/devs' };
+const uri = { route: '/devs', complete: '$host/$resource/devs', toString: () => '$host/$resource/devs' };
 
 describe('toMatchRoute', () => {
   test('fails', () => {
