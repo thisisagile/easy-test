@@ -19,8 +19,12 @@
     "unit testing"
   ],
   "scripts": {
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "postlint": "npm run format",
+    "format": "prettier --write src test *.js *.json",
+    "prebuild": "npm run lint",
     "build": "tsc",
-    "test": "jest --coverage",
+    "test": "jest --coverage --detectLeaks",
     "prepack": "npm run build",
     "semantic-release": "semantic-release"
   },
