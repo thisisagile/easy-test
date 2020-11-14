@@ -7,12 +7,12 @@ import { Message, ofMessage } from './Types';
 export const toPass = (result: CustomMatcherResult): CustomMatcherResult =>
   match(result)
     .not(c => c.pass, `Match failed instead of passed.`)
-    .else("Match passed");
+    .else('Match passed');
 
 export const toFail = (result: CustomMatcherResult): CustomMatcherResult =>
   match(result)
     .not(c => !c.pass, `Match passed instead of failed.`)
-    .else("Match failed");
+    .else('Match failed');
 
 export const toPassWith = (result: CustomMatcherResult, message: Message): CustomMatcherResult =>
   match(result)
@@ -21,7 +21,7 @@ export const toPassWith = (result: CustomMatcherResult, message: Message): Custo
       c => c.message().includes(ofMessage(message)),
       c => `Match passed, but with message '${c.message()}' instead of '${message}'.`
     )
-    .else("Match passed");
+    .else('Match passed');
 
 export const toFailWith = (result: CustomMatcherResult, message: Message): CustomMatcherResult =>
   match(result)
@@ -30,7 +30,7 @@ export const toFailWith = (result: CustomMatcherResult, message: Message): Custo
       c => c.message().includes(ofMessage(message)),
       c => `Match failed, but with message '${c.message()}' instead of '${message}'.`
     )
-    .else("Match failed");
+    .else('Match failed');
 
 expect.extend({
   toPass: toPass,

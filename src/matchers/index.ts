@@ -1,1 +1,1 @@
-export * from "./toBeValid";
+export * from './toBeValid';
