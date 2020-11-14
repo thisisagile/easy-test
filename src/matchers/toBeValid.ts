@@ -1,8 +1,8 @@
 import CustomMatcherResult = jest.CustomMatcherResult;
-import { match } from '../utils';
+import { match, Validatable } from '../utils';
 
 export const toBeValid = (v?: unknown): CustomMatcherResult =>
-  match<any>(v)
+  match<Validatable>(v as Validatable)
     .undefined(v => v, 'Subject is undefined.')
     .undefined(v => v.isValid, 'Subject is not validatable.')
     .not(v => v.isValid, `Subject is not valid.`)
