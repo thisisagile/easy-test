@@ -9,3 +9,5 @@ export type Result = { domain?: string; location?: string; message: string; }
 export type Results = { results: Result[] }
 
 export type Validatable = { isValid: boolean; }
+
+export const passes = "Passes";
