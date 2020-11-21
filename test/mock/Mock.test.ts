@@ -22,12 +22,12 @@ describe('Mock', () => {
 
   test('resolve works', async () => {
     project.fails = mock.resolve(version);
-    expect(project.fails(false)).resolves.toBe(version);
+    await expect(project.fails(false)).resolves.toBe(version);
   });
 
   test('reject works', async () => {
     project.fails = mock.reject(version);
-    expect(project.fails(false)).rejects.toBe(version);
+    await expect(project.fails(false)).rejects.toBe(version);
   });
 
   test('get works', () => {
