@@ -24,7 +24,7 @@
     "format": "prettier --write src test *.js *.json",
     "prebuild": "npm run lint",
     "build": "tsc",
-    "test": "jest --coverage --detectLeaks",
+    "test": "jest --coverage",
     "prepack": "npm run build",
     "semantic-release": "semantic-release"
   },

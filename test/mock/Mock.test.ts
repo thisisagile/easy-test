@@ -1,6 +1,7 @@
 import { mock } from '../../src/mock';
 
 describe('Mock', () => {
+  const version = "Version 42";
 
   class Project {
     get name() { return 'DevOps'; }
@@ -15,23 +16,23 @@ describe('Mock', () => {
   });
 
   test('return works', () => {
-    project.version = mock.return('Version 42');
-    expect(project.version(3)).toBe('Version 42');
+    project.version = mock.return(version);
+    expect(project.version(3)).toBe(version);
   });
 
-  test('resolve works', () => {
-    project.fails = mock.resolve('Version 42');
-    expect(project.fails(false)).resolves.toBe('Version 42');
+  test('resolve works', async () => {
+    project.fails = mock.resolve(version);
+    expect(project.fails(false)).resolves.toBe(version);
   });
 
-  test('reject works', () => {
-    project.fails = mock.reject('Version 42');
-    expect(project.fails(false)).rejects.toBe('Version 42');
+  test('reject works', async () => {
+    project.fails = mock.reject(version);
+    expect(project.fails(false)).rejects.toBe(version);
   });
 
   test('get works', () => {
-    mock.get(project, 'name', 'Version 42');
-    expect(project.name).toBe('Version 42');
+    mock.get(project, 'name', version);
+    expect(project.name).toBe(version);
   });
 
   test('impl works', () => {
