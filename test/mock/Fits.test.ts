@@ -9,7 +9,7 @@ class Manager {}
 describe("match", () => {
 
   test("any", () => {
-    expect({}).toMatchObject(fits.any);
+    expect({}).toMatchObject(fits.any());
   })
 
   test("type", () => {

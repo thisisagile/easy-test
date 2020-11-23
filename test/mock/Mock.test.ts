@@ -32,8 +32,8 @@ describe('mock', () => {
   });
 
   test('get works', () => {
-    mock.property(project, 'name', 'Version 42');
-    expect(project.name).toBe('Version 42');
+    mock.property(project, 'name', version);
+    expect(project.name).toBe(version);
   });
 
   test('impl works', () => {

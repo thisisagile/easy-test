@@ -1,5 +1,5 @@
 export const fits = {
-  any: expect.anything(),
-  type: (type?: any) => expect.any(type),
-  atLeast: (o: any): any => expect.objectContaining(o)
+  any: (): any => expect.anything(),
+  type: (type?: unknown): any => expect.any(type),
+  atLeast: (o: unknown): any => expect.objectContaining(o)
 }
