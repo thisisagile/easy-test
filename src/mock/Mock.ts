@@ -4,7 +4,7 @@ import Mock = jest.Mock;
 
 export const mock = {
   impl: (f?: (...args: any[]) => any): Mock => jest.fn().mockImplementation(f),
-  property: <T extends {}, P extends NonFunctionPropertyNames<Required<T>>>(object: T, getter: P, value: any): SpyInstance =>
+  property: <T extends unknown, P extends NonFunctionPropertyNames<Required<T>>>(object: T, getter: P, value: T[P]): SpyInstance =>
     jest.spyOn(object, getter, "get").mockReturnValue(value),
   reject: (value?: unknown): Mock => jest.fn().mockRejectedValue(value),
   resolve: (value?: unknown): Mock => jest.fn().mockResolvedValue(value),
