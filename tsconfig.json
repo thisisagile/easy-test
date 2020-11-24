@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "lib": ["ES2019"],
-    "module": "commonjs",
+    "module": "CommonJS",
     "target": "ES2019",
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "resolveJsonModule": true,
     "declaration": true,
+    "declarationMap": true,
     "esModuleInterop": true,
     "noImplicitAny": true,
     "sourceMap": true,

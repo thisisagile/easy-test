@@ -9,7 +9,7 @@ export const toFail = (result: CustomMatcherResult): CustomMatcherResult =>
     .not(c => !c.pass, `Match passed instead of failed.`)
     .else('Match failed');
 
-export const toFailWith = (result: CustomMatcherResult, message: Message): CustomMatcherResult =>
+export const toFailWith = (result: CustomMatcherResult, message: Message<CustomMatcherResult>): CustomMatcherResult =>
   match(result)
     .not(c => !c.pass, `Match passed instead of failed.`)
     .not(

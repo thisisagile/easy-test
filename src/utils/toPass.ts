@@ -9,7 +9,7 @@ export const toPass = (result: CustomMatcherResult): CustomMatcherResult =>
     .not(c => c.pass, `Match failed instead of passed.`)
     .else('Match passed');
 
-export const toPassWith = (result: CustomMatcherResult, message: Message): CustomMatcherResult =>
+export const toPassWith = (result: CustomMatcherResult, message: Message<CustomMatcherResult>): CustomMatcherResult =>
   match(result)
     .not(c => c.pass, `Match failed instead of passed.`)
     .not(

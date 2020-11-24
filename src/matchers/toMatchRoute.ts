@@ -5,8 +5,11 @@ export const toMatchRoute = (uri?: unknown, route?: string): CustomMatcherResult
   match<Uri>(uri as Uri)
     .undefined(u => u, 'Subject is undefined.')
     .undefined(() => route, 'Route to include is undefined.')
-    .not(u => isAn<Uri>(u, "complete", "route"), 'Subject is not a valid uri.')
-    .not(u => u.toString().includes(route), u => `Uri '${u.toString()}' does not include '${route}'.`)
+    .not(u => isAn<Uri>(u, 'complete', 'route'), 'Subject is not a valid uri.')
+    .not(
+      u => u.toString().includes(route),
+      u => `Uri '${u.toString()}' does not include '${route}'.`
+    )
     .else(u => `Uri '${u.toString()}' includes '${route}'.`);
 
 expect.extend({
