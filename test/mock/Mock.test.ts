@@ -41,21 +41,4 @@ describe('mock', () => {
     project.version = mock.impl((n: number) => `Beta ${n}`);
     expect(project.version(42)).toBe('Beta 42');
   });
-
-  test('requests works', () => {
-    const { req, res } = mock.requests();
-    expect(req).toBeDefined();
-    expect(req.params).toBeDefined();
-    expect(req.query).toBeDefined();
-    expect(res.json).toBeDefined();
-    expect(res.json()).toBe(res);
-    expect(res.status).toBeDefined();
-    expect(res.status()).toBe(res);
-    expect(res.end).toBeDefined();
-    expect(res.end()).toBe(res);
-    expect(res.set).toBeDefined();
-    expect(res.set()).toBe(res);
-    expect(res.type).toBeDefined();
-    expect(res.type()).toBe(res);
-  });
 });
