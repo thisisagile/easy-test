@@ -1,6 +1,6 @@
 # easy-test
 
-A simple, straightforware small library for testing microservices that have been built  with the @thisisagile/easy library, based on Jest. 
+A simple, straightforward small library for testing microservices that have been built  with the @thisisagile/easy library, based on Jest. 
 
 We also include some commodity utilities for making testing with Jest easier, and a monad for making custom Jest matchers..
 
