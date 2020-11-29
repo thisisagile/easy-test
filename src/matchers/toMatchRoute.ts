@@ -1,16 +1,15 @@
 import CustomMatcherResult = jest.CustomMatcherResult;
-import { isAn, match, Uri } from '../utils';
+import { match, Uri } from '../utils';
 
-export const toMatchRoute = (uri?: unknown, route?: string): CustomMatcherResult =>
-  match<Uri>(uri as Uri)
+export const toMatchRoute = (uri?: Uri, route?: Uri | string): CustomMatcherResult =>
+  match<Uri>(uri)
     .undefined(u => u, 'Subject is undefined.')
     .undefined(() => route, 'Route to include is undefined.')
-    .not(u => isAn<Uri>(u, 'complete', 'route'), 'Subject is not a valid uri.')
     .not(
-      u => u.toString().includes(route),
-      u => `Uri '${u.toString()}' does not include '${route}'.`
+      u => u.toString().includes(route.toString()),
+      u => `Uri '${u.toString()}' does not include '${route.toString()}'.`,
     )
-    .else(u => `Uri '${u.toString()}' includes '${route}'.`);
+    .else(u => `Uri '${u.toString()}' includes '${route.toString()}'.`);
 
 expect.extend({
   toMatchRoute: toMatchRoute,

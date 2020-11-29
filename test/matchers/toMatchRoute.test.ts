@@ -6,11 +6,11 @@ describe('toMatchRoute', () => {
   test('fails', () => {
     expect(toMatchRoute(undefined)).toFailWith('Subject is undefined.');
     expect(toMatchRoute(uri)).toFailWith('Route to include is undefined.');
-    expect(toMatchRoute({}, '')).toFailWith('Subject is not a valid uri.');
-    expect(toMatchRoute(uri, '/managers')).toFailWith(`Uri '${uri.complete}' does not include '/managers'.`);
+    expect(toMatchRoute(uri, '/managers')).toFailWith(`Uri '${uri.toString()}' does not include '/managers'.`);
   });
 
   test('passes', () => {
-    expect(toMatchRoute(uri, '/devs')).toPassWith(`Uri '${uri.complete}' includes '/devs'.`);
+    expect(toMatchRoute(uri, '/devs')).toPassWith(`Uri '${uri.toString()}' includes '/devs'.`);
+    expect(toMatchRoute(uri, uri)).toPassWith(`Uri '${uri.toString()}' includes '${uri.toString()}'.`);
   });
 });
