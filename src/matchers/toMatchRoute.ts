@@ -19,7 +19,7 @@ declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace jest {
     interface Matchers<R, T> {
-      toMatchRoute(route?: string): R;
+      toMatchRoute(route?: Uri | string): R;
     }
   }
 }
