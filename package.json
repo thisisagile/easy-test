@@ -29,8 +29,7 @@
     "semantic-release": "semantic-release"
   },
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "publishConfig": {
     "access": "public"
