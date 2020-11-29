@@ -1,5 +1,7 @@
 import CustomMatcherResult = jest.CustomMatcherResult;
-import { isA, match, Validatable } from '../utils';
+import { Validatable } from '../utils/Types';
+import { isA } from '../utils/Utils';
+import { match } from './Match';
 
 export const toBeValid = (v?: unknown): CustomMatcherResult =>
   match<Validatable>(v as Validatable)

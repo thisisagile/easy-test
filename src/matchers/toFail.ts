@@ -1,6 +1,6 @@
 import { match } from './Match';
 import CustomMatcherResult = jest.CustomMatcherResult;
-import { Message, ofMessage } from './Types';
+import { Message, ofMessage } from '../utils/Types';
 
 // Handles CustomMatcherResult validations.
 

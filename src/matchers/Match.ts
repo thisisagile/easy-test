@@ -1,5 +1,5 @@
-import { isDefined } from './Utils';
-import { Message, ofMessage } from './Types';
+import { isDefined } from '../utils/Utils';
+import { Message, ofMessage } from '../utils/Types';
 import CustomMatcherResult = jest.CustomMatcherResult;
 
 export class Match<S> {
