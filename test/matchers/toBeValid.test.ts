@@ -1,4 +1,4 @@
-import { toBeValid } from '../../src/matchers';
+import { toBeValid } from '../../src';
 
 const valid = { isValid: true, isEmpty: false };
 const invalid = { isValid: false, isEmpty: true };

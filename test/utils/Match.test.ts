@@ -1,4 +1,4 @@
-import { match } from '../../src/matchers';
+import { match } from '../../src';
 
 class Subject {
   constructor(public topic: string) {}

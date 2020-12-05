@@ -1,4 +1,4 @@
-import { fits } from '../../src/mock';
+import { fits } from '../../src';
 
 class Dev {
   constructor(readonly name: string) {}

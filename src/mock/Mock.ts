@@ -6,6 +6,7 @@ const mockProperty = <T, P extends NonFunctionPropertyNames<Required<T>>>(object
   jest.spyOn(object, getter, 'get').mockReturnValue(value);
 
 export const mock = {
+  clear: jest.clearAllMocks(),
   impl: (f?: (...args: any[]) => any): Mock => jest.fn().mockImplementation(f),
   property: mockProperty,
   reject: (value?: unknown): Mock => jest.fn().mockRejectedValue(value),

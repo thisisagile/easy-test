@@ -1,5 +1,7 @@
 import { isFunction } from './Utils';
 
+export type Constructor<T> = { new (...args: any[]): T };
+
 export type Message<Param extends unknown> = string | ((...params: Param[]) => string);
 
 export const ofMessage = <Param>(g: Message<Param>, ...params: Param[]): string => (isFunction(g) ? g(...params) : g);

@@ -1,4 +1,4 @@
-import { toMatchRoute } from '../../src/matchers';
+import { toMatchRoute } from '../../src';
 
 const uri = { route: '/devs', complete: '$host/$resource/devs', toString: () => '$host/$resource/devs' };
 

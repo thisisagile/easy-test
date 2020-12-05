@@ -1,4 +1,4 @@
-import { mock } from '../../src/mock';
+import { mock } from '../../src';
 
 describe('mock', () => {
   const version = 'Version 42';
