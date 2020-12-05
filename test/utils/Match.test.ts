@@ -8,8 +8,8 @@ const passed = 'Passes, which we did not expect.';
 
 describe('match', () => {
   test('match should pass', () => {
-    const c = match('Sander')
-      .not(s => s === 'Sander', 'Fails')
+    const c = match('Kim')
+      .not(s => s === 'Kim', 'Fails')
       .else('Passes');
 
     expect(c.message()).toBe(passed);
