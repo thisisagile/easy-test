@@ -4,7 +4,7 @@ A simple, straightforward small library for testing microservices that have been
 
 We also include some commodity utilities for making testing with Jest easier, and a monad for making custom Jest matchers. We've added matchers for:
 
-- `toBeValid()`. Checks for isValid property.
+- `toBeValid()`. Checks for `isValid` property on subject.
 - `toBeArrayOf()`. Validates if a subject is an array, and if all elements are instances of the type.
 
 
