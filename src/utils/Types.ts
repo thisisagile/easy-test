@@ -13,3 +13,8 @@ export type Results = { results: Result[] };
 export type Validatable = { isValid: boolean };
 
 export type Uri = { route: string; complete: string };
+
+export type Id = string | number;
+
+export type JsonValue = string | number | boolean | null | Json | JsonValue[];
+export type Json = { [key: string]: JsonValue };
