@@ -8,7 +8,7 @@ export const toMatchRoute = (uri?: Uri, route?: Uri | string): CustomMatcherResu
     .undefined(() => route, 'Route to include is undefined.')
     .not(
       u => u.toString().includes(route.toString()),
-      u => `Uri '${u}' does not include '${route}'.`,
+      u => `Uri '${u}' does not include '${route}'.`
     )
     .else(u => `Uri '${u}' includes '${route}'`);
 
