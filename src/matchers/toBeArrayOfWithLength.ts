@@ -6,7 +6,10 @@ export const toBeArrayOfWithLength = <T>(items: unknown, ctor: Constructor<T>, l
   match<[]>(items as [])
     .undefined(it => it, 'Subject is undefined.')
     .not(it => it instanceof Array, 'Subject is not an array.')
-    .not(it => it.length === length, it => `Subject does not have ${length} elements, but ${it.length}.`)
+    .not(
+      it => it.length === length,
+      it => `Subject does not have ${length} elements, but ${it.length}.`
+    )
     .not(it => (it as []).every((i: any) => i instanceof ctor), `Not all elements are of type '${ctor.name}'.`)
     .else(`Subject has ${length} elements, which are all of type '${ctor.name}'`);
 
