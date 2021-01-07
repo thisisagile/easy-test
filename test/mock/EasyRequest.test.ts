@@ -1,5 +1,4 @@
-import { req } from '../../src';
-import { fits } from '../../dist';
+import { fits, req } from '../../src';
 
 describe('EasyRequest', () => {
   test('id', () => {

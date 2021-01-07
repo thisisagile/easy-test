@@ -19,5 +19,9 @@ export class Req {
     return this.state.query;
   }
 
+  get body(): Json {
+    return this.state.body;
+  }
+
   get = (key: unknown): any => this.state[key.toString()] ?? this.path[key.toString()] ?? this.query[key.toString()];
 }
