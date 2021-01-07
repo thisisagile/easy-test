@@ -41,4 +41,21 @@ describe('mock', () => {
     project.version = mock.impl((n: number) => `Beta ${n}`);
     expect(project.version(42)).toBe('Beta 42');
   });
+
+  test('req id works', () => {
+    const req = mock.req.withId(42);
+    expect(req.id).toBe(42);
+  });
+
+  test('req q works', () => {
+    const req = mock.req.withQ("sander");
+    expect(req.q).toBe("sander");
+  });
+
+  test('req from works', () => {
+    const req = mock.req.with({path: {id: 42, domain: "dev"}, query: {q: "jeroen"}});
+    expect(req.id).toBe(42);
+    expect(req.q).toBe("jeroen");
+    expect(req.get("domain")).toBe("dev");
+  });
 });
