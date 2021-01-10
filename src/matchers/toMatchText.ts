@@ -12,7 +12,7 @@ export const toMatchText = (value?: unknown, text?: unknown): CustomMatcherResul
     .else(v => `Text '${v}' matches`);
 
 expect.extend({
-  toMatchRoute: toMatchText,
+  toMatchText: toMatchText,
 });
 
 declare global {
