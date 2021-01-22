@@ -19,7 +19,7 @@ export class Req {
     return this.state.query;
   }
 
-  get body(): Json {
+  get body(): unknown {
     return this.state.body;
   }
 
