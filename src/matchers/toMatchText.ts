@@ -7,7 +7,7 @@ export const toMatchText = (value?: unknown, text?: unknown): CustomMatcherResul
     .undefined(() => text, 'Text to match with is undefined.')
     .not(
       v => v.toString() === text.toString(),
-      v => `Text '${v}' does not match with text '${text}'.`,
+      v => `Text '${v}' does not match with text '${text}'.`
     )
     .else(v => `Text '${v}' matches`);
 

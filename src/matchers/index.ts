@@ -1,3 +1,4 @@
+export * from './HttpMatchers';
 export * from './Match';
 export * from './toBeArrayOf';
 export * from './toBeArrayOfWithLength';
