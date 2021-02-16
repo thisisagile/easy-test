@@ -6,12 +6,12 @@ export const toHaveStatus = (res: Response, code: number): CustomMatcherResult =
   match<Response>(res)
     .undefined(r => r, 'Response is unknown.')
     .undefined(
-      r => r?.status?.status,
+      r => r?.status?.id,
       () => 'Response does not have a status code'
     )
     .not(
-      r => r.status.status === code,
-      r => `Response does not have code '${code}', but has code '${r.status.status}' instead.`
+      r => r.status.id === code,
+      r => `Response does not have code '${code}', but has code '${r.status.id}' instead.`
     )
     .else(`Response does have status code '${code}'.`);
 

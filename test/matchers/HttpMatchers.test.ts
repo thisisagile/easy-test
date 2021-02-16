@@ -12,20 +12,18 @@ import {
 } from '../../src';
 import { Response } from '../../src/utils/Response';
 
-const response = (code: number): Response => ({ status: { status: code }});
-
+const response = (code: number): Response => ({ status: { name: '', id: code } });
 
 describe('HttpMatchers', () => {
-
   test('toHaveStatus passes', () => {
-    expect(toHaveStatus(response(200), 200)).toPassWith('Response does have status code \'200\'.');
-    expect(toHaveStatus(response(400), 400)).toPassWith('Response does have status code \'400\'.');
+    expect(toHaveStatus(response(200), 200)).toPassWith("Response does have status code '200'.");
+    expect(toHaveStatus(response(400), 400)).toPassWith("Response does have status code '400'.");
   });
 
   test('toHaveStatus fails', () => {
     expect(toHaveStatus(undefined, 200)).toFailWith('Response is unknown.');
-    expect(toHaveStatus(response(200), 300)).toFailWith('Response does not have code \'300\', but has code \'200\' instead.');
-    expect(toHaveStatus(response(400), 500)).toFailWith('Response does not have code \'500\', but has code \'400\' instead.');
+    expect(toHaveStatus(response(200), 300)).toFailWith("Response does not have code '300', but has code '200' instead.");
+    expect(toHaveStatus(response(400), 500)).toFailWith("Response does not have code '500', but has code '400' instead.");
   });
 
   test('toBeOk', () => {
