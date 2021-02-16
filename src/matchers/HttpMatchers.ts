@@ -29,9 +29,11 @@ export const toBeForbidden = (res: Response): CustomMatcherResult => toHaveStatu
 
 export const toBeNotFound = (res: Response): CustomMatcherResult => toHaveStatus(res, 404);
 
-export const toHaveConflict = (res: Response): CustomMatcherResult => toHaveStatus(res, 409);
+export const toBeConflict = (res: Response): CustomMatcherResult => toHaveStatus(res, 409);
 
-export const toHaveInternalError = (res: Response): CustomMatcherResult => toHaveStatus(res, 500);
+export const toBeInternalServerError = (res: Response): CustomMatcherResult => toHaveStatus(res, 500);
+
+export const toBeBadGateway = (res: Response): CustomMatcherResult => toHaveStatus(res, 502);
 
 expect.extend({
   toBeOk,
@@ -41,9 +43,10 @@ expect.extend({
   toBeBadRequest,
   toBeUnauthorized,
   toBeForbidden,
-  toHaveConflict,
-  toHaveInternalError,
+  toBeConflict,
+  toBeInternalServerError,
   toHaveStatus,
+  toBeBadGateway
 });
 
 declare global {
@@ -57,8 +60,9 @@ declare global {
       toBeUnauthorized(): R;
       toBeForbidden(): R;
       toBeBadRequest(): R;
-      toHaveConflict(): R;
-      toHaveInternalError(): R;
+      toBeConflict(): R;
+      toBeInternalServerError(): R;
+      toBeBadGateway(): R;
       toHaveStatus(code: number): R;
     }
   }

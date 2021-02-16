@@ -5,10 +5,11 @@ import {
   toBeNotFound,
   toBeOk,
   toBeUnauthorized,
-  toHaveConflict,
-  toHaveInternalError,
+  toBeConflict,
   toHaveNoContent,
   toHaveStatus,
+  toBeBadGateway,
+  toBeInternalServerError,
 } from '../../src';
 import { Response } from '../../src/utils/Response';
 
@@ -61,13 +62,18 @@ describe('HttpMatchers', () => {
     expect(toBeNotFound(response(666))).toFail();
   });
 
-  test('toHaveConflict', () => {
-    expect(toHaveConflict(response(409))).toPass();
-    expect(toHaveConflict(response(666))).toFail();
+  test('toBeConflict', () => {
+    expect(toBeConflict(response(409))).toPass();
+    expect(toBeConflict(response(666))).toFail();
   });
 
-  test('toHaveInternalError', () => {
-    expect(toHaveInternalError(response(500))).toPass();
-    expect(toHaveInternalError(response(666))).toFail();
+  test('toBeInternalServerError', () => {
+    expect(toBeInternalServerError(response(500))).toPass();
+    expect(toBeInternalServerError(response(666))).toFail();
+  });
+
+  test('toBeBadGateway', () => {
+    expect(toBeBadGateway(response(502))).toPass();
+    expect(toBeBadGateway(response(666))).toFail();
   });
 });
