@@ -58,4 +58,22 @@ describe('mock', () => {
     expect(req.q).toBe('jeroen');
     expect(req.get('domain')).toBe('dev');
   });
+
+  test('get props from state', () => {
+    const req = mock.req.with({ name: 'sander' });
+    expect(req.get('name')).toBe('sander');
+    expect(req.get('last')).toBeUndefined();
+  });
+
+  test('get props from path', () => {
+    const req = mock.req.path({ name: 'sander' });
+    expect(req.get('name')).toBe('sander');
+    expect(req.get('last')).toBeUndefined();
+  });
+
+  test('get props from query', () => {
+    const req = mock.req.query({ name: 'sander' });
+    expect(req.get('name')).toBe('sander');
+    expect(req.get('last')).toBeUndefined();
+  });
 });

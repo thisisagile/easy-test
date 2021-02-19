@@ -12,20 +12,16 @@ export class Req {
   }
 
   get path(): Json {
-    return this.state.path;
+    return this.state?.path ?? {};
   }
 
   get query(): Json {
-    return this.state.query;
+    return this.state?.query ?? {};
   }
 
   get body(): unknown {
     return this.state.body;
   }
 
-  get = (key: unknown): any =>
-    (this.state && this.state[key.toString()]) ? this.state[key.toString()] :
-    (this.path  && this.path[key.toString()])  ? this.path[key.toString()]  :
-    (this.query && this.query[key.toString()]) ? this.query[key.toString()] :
-    undefined;
+  get = (key: unknown): any => this?.state[key.toString()] ?? this.path[key.toString()] ?? this.query[key.toString()];
 }
