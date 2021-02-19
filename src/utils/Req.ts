@@ -23,5 +23,9 @@ export class Req {
     return this.state.body;
   }
 
-  get = (key: unknown): any => this?.state[key.toString()] ?? this?.path[key.toString()] ?? this?.query[key.toString()];
+  get = (key: unknown): any =>
+    (this.state && this.state[key.toString()]) ? this.state[key.toString()] :
+    (this.path  && this.path[key.toString()])  ? this.path[key.toString()]  :
+    (this.query && this.query[key.toString()]) ? this.query[key.toString()] :
+    undefined;
 }
