@@ -76,4 +76,9 @@ describe('mock', () => {
     expect(req.get('name')).toBe('sander');
     expect(req.get('last')).toBeUndefined();
   });
+
+  test('get provider with data', () => {
+    const data = mock.provider.data({ name: 'sander' });
+    return expect(data.execute()).resolves.toMatchObject({ body: { data: { itemCount: 1, items: [{ name: 'sander' }] } } });
+  });
 });

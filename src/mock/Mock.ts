@@ -22,4 +22,7 @@ export const mock = {
   resolve: (value?: unknown): Mock => jest.fn().mockResolvedValue(value),
   return: (value?: unknown): Mock => jest.fn().mockReturnValue(value),
   this: (): Mock => jest.fn().mockReturnThis(),
+  provider: {
+    data: (...items: any[]): { execute: Mock } => ({ execute: jest.fn().mockResolvedValue({ body: { data: { itemCount: items.length, items } } }) }),
+  },
 };

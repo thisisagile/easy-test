@@ -46,7 +46,7 @@ expect.extend({
   toBeConflict,
   toBeInternalServerError,
   toHaveStatus,
-  toBeBadGateway
+  toBeBadGateway,
 });
 
 declare global {
