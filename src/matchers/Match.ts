@@ -1,5 +1,5 @@
 import { isDefined } from '../utils/Utils';
-import { Message, ofMessage } from '../utils/Types';
+import { Message, toMessage } from '../utils/Types';
 import CustomMatcherResult = jest.CustomMatcherResult;
 
 export class Match<S> {
@@ -8,7 +8,7 @@ export class Match<S> {
   not(p: (s: S) => boolean, message: Message<S>): Match<S> {
     if (this.failed) return this;
     try {
-      return new Match<S>(this.subject, !p(this.subject), ofMessage(message, this.subject));
+      return new Match<S>(this.subject, !p(this.subject), toMessage(message, this.subject));
     } catch (e) {
       return new Match<S>(this.subject, true, e.message);
     }
@@ -21,7 +21,7 @@ export class Match<S> {
   else(message: Message<S>): CustomMatcherResult {
     return {
       pass: !this.failed,
-      message: () => (this.failed ? ofMessage(this.message) : `${ofMessage(message, this.subject)}, which we did not expect.`),
+      message: () => (this.failed ? toMessage(this.message) : `${toMessage(message, this.subject)}, which we did not expect.`),
     };
   }
 }
