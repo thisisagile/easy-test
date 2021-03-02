@@ -4,13 +4,13 @@ export type Constructor<T> = { new (...args: any[]): T };
 
 export type Message<Param extends unknown> = string | ((...params: Param[]) => string);
 
-export const ofMessage = <Param>(g: Message<Param>, ...params: Param[]): string => (isFunction(g) ? g(...params) : g);
+export const toMessage = <Param>(g: Message<Param>, ...params: Param[]): string => (isFunction(g) ? g(...params) : g);
+
+export type Validatable = { isValid: boolean };
 
 export type Result = { domain?: string; location?: string; message: string };
 
-export type Results = { results: Result[] };
-
-export type Validatable = { isValid: boolean };
+export type Results = Validatable & { results: Result[] };
 
 export type Uri = { route: string; complete: string };
 
