@@ -16,6 +16,7 @@ export const mock = {
     id: (id: Id): Req => new Req({ id }),
     q: (q: unknown): Req => new Req({ q }),
     with: (a: Json): Req => new Req(a),
+    body: (body: unknown): Req => new Req({ body }),
     path: (path: Json): Req => new Req({ path }),
     query: (query: Json): Req => new Req({ query }),
   },

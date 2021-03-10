@@ -59,6 +59,11 @@ describe('mock', () => {
     expect(req.get('domain')).toBe('dev');
   });
 
+  test('req body works', () => {
+    const req = mock.req.body({ name: 'sander' });
+    expect(req.body).toStrictEqual({ name: 'sander'} );
+  });
+
   test('get props from state', () => {
     const req = mock.req.with({ name: 'sander' });
     expect(req.get('name')).toBe('sander');
