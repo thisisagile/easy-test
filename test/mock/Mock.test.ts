@@ -81,4 +81,10 @@ describe('mock', () => {
     const data = mock.provider.data({ name: 'sander' });
     return expect(data.execute()).resolves.toMatchObject({ body: { data: { itemCount: 1, items: [{ name: 'sander' }] } } });
   });
+
+  test('mock empty', () => {
+    const p = mock.empty<Project>({ version: mock.return() });
+    p.version(42);
+    return expect(p.version).toHaveBeenCalledWith(42);
+  });
 });

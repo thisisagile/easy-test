@@ -25,4 +25,5 @@ export const mock = {
   provider: {
     data: (...items: any[]): { execute: Mock } => ({ execute: jest.fn().mockResolvedValue({ body: { data: { itemCount: items.length, items } } }) }),
   },
+  empty: <T>(props: any = {}): T => (props as unknown) as T,
 };
