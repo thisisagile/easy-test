@@ -61,7 +61,7 @@ describe('mock', () => {
 
   test('req body works', () => {
     const req = mock.req.body({ name: 'sander' });
-    expect(req.body).toStrictEqual({ name: 'sander'} );
+    expect(req.body).toStrictEqual({ name: 'sander' });
   });
 
   test('get props from state', () => {
