@@ -19,4 +19,4 @@ export type Id = string | number;
 export type JsonValue = string | number | boolean | null | Json | JsonValue[];
 export type Json = { [key: string]: JsonValue };
 
-export type Exception = { id: Id; message: string; reason?: string };
+export type Exception = { id: Id; reason?: string };
