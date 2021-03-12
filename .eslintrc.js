@@ -15,7 +15,7 @@ module.exports = {
     'plugin:jest/style',
     'plugin:sonarjs/recommended',
     'plugin:security/recommended',
-    'prettier/@typescript-eslint',
+    "plugin:prettier/recommended"
   ],
   rules: {
     '@typescript-eslint/no-explicit-any': 'off',
