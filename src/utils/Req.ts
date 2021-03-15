@@ -1,4 +1,4 @@
-import { Id, Json, JsonValue } from './Types';
+import { Id, Json, JsonValue, Text } from './Types';
 
 export class Req {
   constructor(readonly state: any = {}) {}
@@ -23,5 +23,5 @@ export class Req {
     return this.state.body;
   }
 
-  get = (key: unknown): any => this?.state[key.toString()] ?? this.path[key.toString()] ?? this.query[key.toString()];
+  get = (key: Text): any => this?.state[key.toString()] ?? this.path[key.toString()] ?? this.query[key.toString()];
 }

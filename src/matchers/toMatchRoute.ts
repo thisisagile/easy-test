@@ -1,13 +1,14 @@
 import CustomMatcherResult = jest.CustomMatcherResult;
 import { Uri } from '../utils/Types';
 import { match } from './Match';
+import { toString } from '../utils/Types';
 
 export const toMatchRoute = (uri?: Uri, route?: Uri | string): CustomMatcherResult =>
-  match<Uri>(uri)
+  match<Uri | undefined>(uri)
     .undefined(u => u, 'Subject is undefined.')
     .undefined(() => route, 'Route to include is undefined.')
     .not(
-      u => u.toString().includes(route.toString()),
+      u => toString(u).includes(toString(route)),
       u => `Uri '${u}' does not include '${route}'.`
     )
     .else(u => `Uri '${u}' includes '${route}'`);
