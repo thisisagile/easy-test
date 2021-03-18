@@ -1,15 +1,15 @@
 import {
+  toBeBadGateway,
   toBeBadRequest,
+  toBeConflict,
   toBeCreated,
   toBeForbidden,
+  toBeInternalServerError,
   toBeNotFound,
   toBeOk,
   toBeUnauthorized,
-  toBeConflict,
   toHaveNoContent,
   toHaveStatus,
-  toBeBadGateway,
-  toBeInternalServerError,
 } from '../../src';
 import { Response } from '../../src/utils/Response';
 

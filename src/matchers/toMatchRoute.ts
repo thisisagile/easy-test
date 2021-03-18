@@ -1,7 +1,6 @@
 import CustomMatcherResult = jest.CustomMatcherResult;
-import { Uri } from '../utils/Types';
+import { toString, Uri } from '../utils/Types';
 import { match } from './Match';
-import { toString } from '../utils/Types';
 
 export const toMatchRoute = (uri?: Uri, route?: Uri | string): CustomMatcherResult =>
   match<Uri | undefined>(uri)
