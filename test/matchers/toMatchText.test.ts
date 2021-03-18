@@ -1,6 +1,6 @@
-import { toMatchRoute, toMatchText } from '../../src';
+import { toMatchText } from '../../src';
 
-describe('toMatchRoute', () => {
+describe('toMatchText', () => {
   const s = 'Hello';
   const o = { toString: () => 'Goodbye' };
 

@@ -23,4 +23,6 @@ export type Exception = { id: Id; reason?: string };
 
 export type Text = { toString: () => string };
 
+export type Query = Text;
+
 export const toString = (t?: unknown): string => (isDefined(t) ? (t as Text).toString() : '');
