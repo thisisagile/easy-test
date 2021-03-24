@@ -12,7 +12,7 @@ export type Result = { domain?: string; location?: string; message: string };
 
 export type Results = Validatable & { results: Result[] };
 
-export type Uri = { route: string; complete: string };
+export type Uri = Text;
 
 export type Id = string | number;
 
