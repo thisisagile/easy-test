@@ -35,8 +35,23 @@ export const toBeInternalServerError = (res: Response): CustomMatcherResult => t
 
 export const toBeBadGateway = (res: Response): CustomMatcherResult => toHaveStatus(res, 502);
 
+export const toBeOkWithItems = (res: Response, length: number): CustomMatcherResult =>
+  match<Response>(res)
+    .undefined(r => r.status?.id, 'Response did not have a status')
+    .not(
+      r => r.status.id === 200,
+      r => `Response did not have status '200'. It had status '${r.status.id}' instead.`
+    )
+    .undefined(r => r?.body?.data?.items, `Response did not have any items.`)
+    .not(
+      r => (r?.body?.data?.itemCount ?? 0) >= length,
+      r => `Response did not have at least ${length} items. It only had ${r?.body?.data?.itemCount ?? 0} items.`
+    )
+    .else(`Response had status 200 and at least ${length} items`);
+
 expect.extend({
   toBeOk,
+  toBeOkWithItems,
   toBeCreated,
   toHaveNoContent,
   toBeNotFound,
@@ -54,6 +69,7 @@ declare global {
   namespace jest {
     interface Matchers<R, T> {
       toBeOk(): R;
+      toBeOkWithItems(): R;
       toBeCreated(): R;
       toHaveNoContent(): R;
       toBeNotFound(): R;

@@ -7,13 +7,14 @@ import {
   toBeInternalServerError,
   toBeNotFound,
   toBeOk,
+  toBeOkWithItems,
   toBeUnauthorized,
   toHaveNoContent,
   toHaveStatus,
 } from '../../src';
-import { Response } from '../../src/utils/Response';
+import { Response, RestResult } from '../../src/utils/Response';
 
-const response = (code: number): Response => ({ status: { name: '', id: code } });
+const response = (code: number, body = {}): Response => ({ status: { name: '', id: code }, body });
 
 describe('HttpMatchers', () => {
   test('toHaveStatus passes', () => {
@@ -29,6 +30,20 @@ describe('HttpMatchers', () => {
   test('toBeOk', () => {
     expect(toBeOk(response(200))).toPassMatcher();
     expect(toBeOk(response(666))).toFailMatcher();
+  });
+
+  test('toBeOkWithItems passes', () => {
+    const withItems = (count: number): RestResult => ({ data: { code: 200, items: [], itemCount: count } });
+    expect(toBeOkWithItems(response(200, withItems(1)), 1)).toPassMatcher();
+    expect(toBeOkWithItems(response(200, withItems(5)), 1)).toPassMatcher();
+    expect(toBeOkWithItems(response(200, withItems(1)), 2)).toFailMatcherWith('Response did not have at least 2 items. It only had 1 items.');
+  });
+
+  test('toBeOkWithItems fails', () => {
+    expect(toBeOkWithItems(response(200, { data: { items: [] } }), 1)).toFailMatcherWith('Response did not have at least 1 items. It only had 0 items.');
+    expect(toBeOkWithItems(response(200, { data: { itemCount: 0 } }), 1)).toFailMatcherWith('Response did not have any items.');
+    expect(toBeOkWithItems(response(200, { error: { errorCount: 1 } }), 1)).toFailMatcherWith('Response did not have any items.');
+    expect(toBeOkWithItems(response(400), 1)).toFailMatcherWith("Response did not have status '200'");
   });
 
   test('toBeBadRequest', () => {
