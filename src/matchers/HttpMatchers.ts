@@ -69,7 +69,7 @@ declare global {
   namespace jest {
     interface Matchers<R, T> {
       toBeOk(): R;
-      toBeOkWithItems(): R;
+      toBeOkWithItems(length: number): R;
       toBeCreated(): R;
       toHaveNoContent(): R;
       toBeNotFound(): R;
