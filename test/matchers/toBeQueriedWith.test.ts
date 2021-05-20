@@ -3,9 +3,9 @@ import Mock = jest.Mock;
 
 describe('toBeQueriedWith', () => {
   const select = 'SELECT * FROM Table;';
-  const un: Mock = (undefined as unknown) as Mock;
+  const un: Mock = undefined as unknown as Mock;
   const empty = mock.return();
-  const query = ({ mock: { calls: [[{ toString: () => select }]] } } as unknown) as Mock;
+  const query = { mock: { calls: [[{ toString: () => select }]] } } as unknown as Mock;
 
   test('fails', () => {
     expect(toBeQueriedWith(un, '')).toFailMatcherWith('Query is unknown.');
