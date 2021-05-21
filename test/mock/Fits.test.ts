@@ -2,6 +2,7 @@ import { fits } from '../../src';
 
 class Dev {
   constructor(readonly name: string) {}
+  toString = (): string => this.name;
 }
 
 class Manager {}
@@ -21,8 +22,15 @@ describe('match', () => {
     expect({ first: 'Sander', last: 'Hoogendoorn' }).not.toMatchObject(fits.with({ first: 'Jeroen' }));
   });
 
-  test('with toBe', () => {
+  test('with equal', () => {
     expect({ first: 'Sander', last: 'Hoogendoorn' }).toEqual(fits.with({ first: 'Sander' }));
     expect({ first: 'Sander', last: 'Hoogendoorn' }).not.toEqual(fits.with({ first: 'Jeroen' }));
+  });
+
+  test('text', () => {
+    expect(new Dev('Sander')).toEqual(fits.text('Sander'));
+    expect(new Dev('Sander')).toEqual(fits.text(new Dev('Sander')));
+    expect('Sander').toEqual(fits.text(new Dev('Sander')));
+    expect('Sander').not.toEqual(fits.text(new Dev('Jeroen')));
   });
 });
