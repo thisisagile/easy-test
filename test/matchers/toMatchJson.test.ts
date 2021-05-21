@@ -15,6 +15,7 @@ describe('toMatchJson', () => {
   const dev = new Dev('Sander');
   const devWrong = new Dev('Wouter');
   const devFunction = new DevWithFunction('Wouter');
+  const devFunction2 = new DevWithFunction('Wouter');
 
   test('fails', () => {
     expect(toMatchJson()).toFailMatcherWith(MatchesJson.SubjectUndefined);
@@ -23,6 +24,7 @@ describe('toMatchJson', () => {
     expect(toMatchJson(json, devWrong)).toFailMatcherWith(MatchesJson.DoesNotMatch);
     expect(toMatchJson(dev, json)).toFailMatcherWith(MatchesJson.DoesNotMatch);
     expect(toMatchJson(dev, devFunction)).toFailMatcherWith(MatchesJson.DoesNotMatch);
+    expect(toMatchJson(devFunction, devFunction2)).toFailMatcherWith(MatchesJson.DoesNotMatch);
   });
 
   test('passes', () => {
