@@ -5,6 +5,7 @@ export * from './toBeArrayOf';
 export * from './toBeArrayOfWithLength';
 export * from './toFailMatcher';
 export * from './toBeValid';
+export * from './toMatchExactJson';
 export * from './toMatchException';
 export * from './toMatchJson';
 export * from './toMatchRoute';
