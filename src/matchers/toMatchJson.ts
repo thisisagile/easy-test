@@ -1,7 +1,6 @@
 import CustomMatcherResult = jest.CustomMatcherResult;
 import { match } from './Match';
 import { eq } from '../utils/Eq';
-import { asJson } from '../utils/Utils';
 
 export const MatchesJson = {
   SubjectUndefined: 'Subject is undefined.',
@@ -14,7 +13,7 @@ export const toMatchJson = (value?: unknown, subset?: unknown): CustomMatcherRes
   match<unknown>(value)
     .undefined(v => v, MatchesJson.SubjectUndefined)
     .undefined(() => subset, MatchesJson.SubsetUndefined)
-    .not(v => eq.subset(asJson(v), asJson(subset)), MatchesJson.DoesNotMatch)
+    .not(v => eq.subset(v, subset), MatchesJson.DoesNotMatch)
     .else(() => MatchesJson.Yes);
 
 expect.extend({
@@ -25,7 +24,7 @@ declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace jest {
     interface Matchers<R, T> {
-      toMatchJson(text?: unknown): R;
+      toMatchJson(subset?: unknown): R;
     }
   }
 }
