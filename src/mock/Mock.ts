@@ -24,7 +24,23 @@ export const mock = {
   return: (value?: unknown): Mock => jest.fn().mockReturnValue(value),
   this: (): Mock => jest.fn().mockReturnThis(),
   provider: {
-    data: (...items: any[]): { execute: Mock } => ({ execute: jest.fn().mockResolvedValue({ body: { data: { itemCount: items.length, items } } }) }),
+    data: (...items: any[]): { execute: Mock } => ({
+      execute: jest.fn().mockResolvedValue({
+        body: {
+          data: {
+            itemCount: items.length,
+            items,
+          },
+        },
+      }),
+    }),
   },
   empty: <T = any>(props: any = {}): T => props as unknown as T,
+  date: (epoch = 1621347575): Date => {
+    const date = new Date(epoch);
+    date.toString = mock.return('Mon Jan 19 1970 19:22:27 GMT+0100 (Central European Standard Time)');
+    date.toLocaleDateString = mock.return('19/01/1970');
+    date.toDateString = mock.return('19/01/1970');
+    return date;
+  },
 };

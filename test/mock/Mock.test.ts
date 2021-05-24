@@ -92,4 +92,11 @@ describe('mock', () => {
     p.version(42);
     return expect(p.version).toHaveBeenCalledWith(42);
   });
+
+  test('date', () => {
+    const d = mock.date();
+    const d2 = mock.date();
+    expect(d.toString()).toBe(d2.toString());
+    expect(d.toLocaleDateString()).toBe(d2.toLocaleDateString());
+  });
 });
