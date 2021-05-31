@@ -2,6 +2,7 @@ import { fits } from '../../src';
 
 class Dev {
   constructor(readonly name: string) {}
+
   toString = (): string => this.name;
 }
 
@@ -32,5 +33,15 @@ describe('match', () => {
     expect(new Dev('Sander')).toEqual(fits.text(new Dev('Sander')));
     expect('Sander').toEqual(fits.text(new Dev('Sander')));
     expect('Sander').not.toEqual(fits.text(new Dev('Jeroen')));
+  });
+
+  test('json', () => {
+    expect({}).toEqual(fits.json({}));
+    expect({}).not.toEqual(fits.json({ name: 'Sander' }));
+    expect({ name: 'Sander' }).toEqual(fits.json({ name: 'Sander' }));
+    expect({ name: 'Sander', role: 'CTO' }).toEqual(fits.json({ name: 'Sander' }));
+    expect({ name: 'Sander' }).not.toEqual(fits.json({ name: 'Sander', role: 'CTO' }));
+    expect(new Dev('Sander')).toEqual(fits.json({ name: 'Sander' }));
+    expect(new Dev('Sander')).not.toEqual(fits.json(new Dev('Sander')));
   });
 });
