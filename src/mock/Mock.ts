@@ -43,4 +43,13 @@ export const mock = {
     date.toDateString = mock.return('19/01/1970');
     return date;
   },
+  returnOnce: (firstValueDefault: boolean, ...values: unknown[]): Mock => {
+    let mock = jest.fn();
+    if (values?.length > 0) {
+      values.forEach((value, index) => {
+        firstValueDefault && index === 0 ? (mock = jest.fn(() => value)) : (mock = mock.mockImplementationOnce(() => value));
+      });
+    }
+    return mock;
+  },
 };

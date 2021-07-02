@@ -99,4 +99,27 @@ describe('mock', () => {
     expect(d.toString()).toBe(d2.toString());
     expect(d.toLocaleDateString()).toBe(d2.toLocaleDateString());
   });
+
+  test('return once works', () => {
+    const version2 = 'Version 43';
+    project.version = mock.returnOnce(false, version, version2);
+    expect(project.version(1)).toBe(version);
+    expect(project.version(2)).toBe(version2);
+    expect(project.version(3)).toBeUndefined();
+  });
+
+  test('return once default works', () => {
+    const version2 = 'Version 43';
+    project.version = mock.returnOnce(true, version, version2);
+    expect(project.version(1)).toBe(version2);
+    expect(project.version(2)).toBe(version);
+    expect(project.version(3)).toBe(version);
+  });
+
+  test('return once default no values works', () => {
+    project.version = mock.returnOnce(true);
+    expect(project.version(1)).toBeUndefined();
+    project.version = mock.returnOnce(false);
+    expect(project.version(1)).toBeUndefined();
+  });
 });
